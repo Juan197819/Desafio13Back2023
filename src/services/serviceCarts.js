@@ -1,6 +1,5 @@
 import config from '../config/configEnv.js';
 import sendEmail from '../config/configMail.js';
-import logger from '../config/configWinston.js';
 import { dtoProduct } from '../dtos/dtoProduct.js';
 import {dtoTicket} from '../dtos/dtoTicket.js'
 const {default: daoCart} = await import(`../daos/${config.PERSISTENCE}/daoCarts.js`)

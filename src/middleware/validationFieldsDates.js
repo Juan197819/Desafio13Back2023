@@ -1,3 +1,4 @@
+import logger from "../config/configWinston.js"
 import { schemaProducts } from "../daos/MongoDB/models/modelProducts.js"
 import { schemaUsers } from "../daos/MongoDB/models/modelUsers.js"
 import { errorCustom } from "./errorHandler.js"
@@ -10,6 +11,7 @@ import { errorCustom } from "./errorHandler.js"
  */
 function evalFieldsWithSchemaMongo(objBody, { paths }) {
     let incorrectlyEnteredFields = {}
+    //"paths" es un propiedad de los Schema Mongo y trae un objeto con cada valor del esquema y caracteristicas de cada uno de estos
     for (const item in paths) {
         let currentValue = objBody[item]
         if (!currentValue) {
@@ -19,7 +21,10 @@ function evalFieldsWithSchemaMongo(objBody, { paths }) {
         }
         else {
             let requiredDataType = (paths[item].instance).toLowerCase()
+
+            if (!isNaN(Number(currentValue))) currentValue = Number(currentValue)
             if (requiredDataType == 'array') requiredDataType = 'object'
+            
             if (requiredDataType != typeof currentValue) {
                 incorrectlyEnteredFields[item] = `Key ${item.toUpperCase()} needs to datatype ${requiredDataType.toUpperCase()}, received value '${currentValue}' of type ${(typeof currentValue).toUpperCase()}`
             }

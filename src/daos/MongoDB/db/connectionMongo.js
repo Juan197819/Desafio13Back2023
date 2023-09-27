@@ -4,15 +4,15 @@ import logger from "../../../config/configWinston.js";
 
 try {
     let url
-    if (config.NODE_ENV=='development') {
-        url = 'mongodb://localhost:27017/ecommerceLocal'
-        logger.http('Wait...Local MongoDB database connecting...')
-    } else {
+    if (config.NODE_ENV =='production') {
         url=config.MONGO_ATLAS
-        logger.http('Wait... MongoDB ATLAS database in the cloud connecting...')
+        logger.info('Wait... MongoDB ATLAS database in the cloud connecting...')
+    } else {
+        url = 'mongodb://localhost:27017/ecommerceLocal'
+        logger.info('Wait...Local MongoDB database connecting...')
     }
     await mongoose.connect(url)
-    logger.http('MongoDB Database connected!!')
+    logger.info('MongoDB Database connected!!')
 } catch (error) {
-    next()
+    //Si entra en este catch es capturada por el "errorHandler"
 }

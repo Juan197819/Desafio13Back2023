@@ -1,6 +1,5 @@
 import config from '../config/configEnv.js';
 import logger from '../config/configWinston.js';
-import { errorCustom } from '../middleware/errorHandler.js';
 import { repository } from '../repository/repository.js';
 const { default: daoProducts } = await import(`../daos/${config.PERSISTENCE}/daoProducts.js`)
 logger.info('Persistence: ' +config.PERSISTENCE)
@@ -18,7 +17,7 @@ class ServiceProducts {
         try {
             const productos = await repository.repositoryGetProducts(reqQuery)
             return productos
-        } catch (error) {
+        } catch (error) { 
             throw error
         }
     }

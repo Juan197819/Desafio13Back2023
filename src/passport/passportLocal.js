@@ -18,7 +18,7 @@ async function login(req, email, password, done) {
         }
         return done(null,user)    
     } catch (error) {
-        return done(error, true)    
+        return done(error, true)
     }
 }
 async function register(req, email, password, done) {

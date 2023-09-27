@@ -37,7 +37,7 @@ class ServiceTest {
             loggerProd.info('Prueba de Mensaje con nivel info LOGGER PRODUCCION')
             loggerProd.http('Prueba de Mensaje con nivel http LOGGER PRODUCCION')
             loggerProd.debug('Prueba de Mensaje con nivel debug LOGGER PRODUCCION')
-            return 
+            return 'Test de Loguers rapido (produccion y desarrollo), chequea la consola de la APP. Podes setear la opcion --mode production para levantar la app en produccion y ver los loguers trabajando, por defecto se veran loguer de desarrollo'
         } catch (error) {
             throw error
         }

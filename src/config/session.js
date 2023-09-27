@@ -3,9 +3,8 @@ import MongoStore from 'connect-mongo';
 import config from './configEnv.js';
 if (config.PERSISTENCE == 'MongoDB') import('../../src/daos/MongoDB/db/connectionMongo.js')
 
-let mongoUrl = config.MONGO_ATLAS
-if (config.NODE_ENV == 'development') mongoUrl = 'mongodb://localhost:27017/ecommerceLocal'
-
+let mongoUrl = 'mongodb://localhost:27017/ecommerceLocal'
+if (config.NODE_ENV == 'production') mongoUrl = config.MONGO_ATLAS
 export const configSession = session({
     secret: '1234',
     saveUninitialized: true,

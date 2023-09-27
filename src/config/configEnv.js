@@ -2,7 +2,7 @@ import 'dotenv/config'
 import { command } from './configCommander.js'
 
 export default {
-    NODE_ENV: command.opts().mode ||process.env.NODE_ENV,
+    NODE_ENV: command.opts().mode ||process.env.NODE_ENV||'development',
     PERSISTENCE: command.opts().storage || process.env.PERSISTENCE,
     MONGO_ATLAS: process.env.MONGO_ATLAS,
     ADMIN_EMAIL: process.env.ADMIN_EMAIL,
