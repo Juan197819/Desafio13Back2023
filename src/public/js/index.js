@@ -38,15 +38,22 @@ if (tbody) {
 /* ---------------- FUNCION AUTOINVOCADA QUE TOMA EL EMAIL DEL USUARIO LOGUEADO DESDE EL ATRIBUTO "data-email" del H1 PARA ARMAR UN BOTON CON LA RUTA DE PRODUCTOS DEL CARRITO ESPECIFICO PARA ESE USUARIO---------------- */
 let nav
 (async function () {
-
     const h1 = document.querySelector('header div h1'); 
     nav = document.getElementById('nav'); 
     if (h1) {
         const email = h1.getAttribute('data-email') //EN EL H1 DEL HTML CREÉ UN data-email= {email dinamico de usuario desde variable de handlebars} Y ACA LO RECUPERO        
         let idCart = localStorage.getItem(email) // YA CON ESE EMAIL VERIFICO SI HAY ALGUN ID DE CARRITO EN EL LOCALSTORAGE
-        
-        nav.innerHTML = `<a id="botonCarrito" href="/carts/${idCart || "cartEmpty"}" class="botonLogout" >Ir al carrito</a>`
-        //SI ES LA PRIMERA VEZ DEL USUARIO EL idCart VA A SER NULL POR ENDE LA RUTA SE ARMA CON cartEmpty
+        if (email == 'adminCoder@coder.com') {
+            const botonAgregarProducto = document.querySelector('.botonAgregarProductos');
+            botonAgregarProducto.style.display = 'none'
+            console.log('email', email)
+        } else {
+            const botonCrearProductos = document.querySelector('.crearProductos');
+            botonCrearProductos.style.display
+                = 'none'
+            nav.innerHTML = `<a id="botonCarrito" href="/carts/${idCart || "cartEmpty"}" class="botonLogout" >Ir al carrito</a>`
+            //SI ES LA PRIMERA VEZ DEL USUARIO EL idCart VA A SER NULL POR ENDE LA RUTA SE ARMA CON cartEmpty
+        }
     }
 })()
 
@@ -54,13 +61,12 @@ let nav
 async function agregarAlCarrito(pid, email) {
     //1° VEZ SE CREA UN CARRITO Y SE GUARDA EL ID EN localStorage
     //2° en adelante SE TOMA ESE ID PARA NO VOLVER A CREARLO
-    
-    let idCart =localStorage.getItem(email)
-    if (!idCart){
-    //CREACION DE CARRITO
-        let response = await fetch(`/api/carts/`,{
-           method: 'POST'
-         })
+    let idCart = localStorage.getItem(email)
+    if (!idCart) {
+        //CREACION DE CARRITO
+        let response = await fetch(`/api/carts/`, {
+            method: 'POST'
+        })
         let newCart = await response.json()
         idCart = newCart._id
 
@@ -68,12 +74,11 @@ async function agregarAlCarrito(pid, email) {
         localStorage[email] = idCart
         alert('Carrito creado ok')
         document.getElementById('botonCarrito').setAttribute('href', `/carts/${idCart}`); //AL CREAR UN CARRITO SETEO LA RUTA DEL BOTON "Ir al carrito" CON EL NUEVO ID REEMPLAZANDO EL "cartEmpty"
-
     }
-   //SE AGREGA PRODUCTO
-    let prod = await fetch(`/api/carts/${idCart}/product/${pid}`,{
+    //SE AGREGA PRODUCTO
+    let prod = await fetch(`/api/carts/${idCart}/product/${pid}`, {
         method: 'POST'
-      })
-      prod = await prod.json()
-      alert('Producto agregado!!')
+    })
+    prod = await prod.json()
+    alert('Producto agregado!!')
 }

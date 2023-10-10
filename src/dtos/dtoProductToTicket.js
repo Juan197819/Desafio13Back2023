@@ -1,4 +1,4 @@
-export function dtoProduct(arrayProd) {
+export function dtoProductToTicket(arrayProd) {
     return arrayProd.map(p => {
         return {
             product: p.product.title,

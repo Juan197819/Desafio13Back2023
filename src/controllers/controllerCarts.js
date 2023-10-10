@@ -22,7 +22,7 @@ class ControllerCarts {
     async controllerAddProductToCart (req, res, next){
         try {
             const {cid, pid} = req.params
-            const cart = await serviceCarts.serviceAddProductToCart(cid,pid)
+            const cart = await serviceCarts.serviceAddProductToCart(cid, pid)
             res.status(200).json(cart)
         } catch (error) {
             next(error)

@@ -1,4 +1,4 @@
-export function dtoViews(response) {
+export function dtoProductToViews(response) {
     const prod = response.payload.map(p => {
         return {
             id: p._id,

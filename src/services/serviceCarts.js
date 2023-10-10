@@ -1,9 +1,10 @@
 import config from '../config/configEnv.js';
 import sendEmail from '../config/configMail.js';
-import { dtoProduct } from '../dtos/dtoProduct.js';
+import { dtoProductToTicket } from '../dtos/dtoProductToTicket.js';
 import {dtoTicket} from '../dtos/dtoTicket.js'
 const {default: daoCart} = await import(`../daos/${config.PERSISTENCE}/daoCarts.js`)
 const {daoTickets} = await import(`../daos/${config.PERSISTENCE}/daoTickets.js`)
+
 class ServiceCarts {
     async serviceAddCart (){
         try {
@@ -69,7 +70,7 @@ class ServiceCarts {
                 const ticket = dtoTicket(amount, user)
                 await daoTickets.addTickets(ticket)
                 await this.serviceUpdateAllProductsToCart(cid, productsOutOfStock)                
-                articleBuyed = dtoProduct(productsToBuy)
+                articleBuyed = dtoProductToTicket(productsToBuy)
                 await sendEmail('Venta Online: Transacción Aprobada', { ...ticket, ...user, articleBuyed })
             }
             let message
@@ -85,7 +86,7 @@ class ServiceCarts {
             return {
                 message,
                 articleBuyed,
-                articleOutOfStock: dtoProduct(productsOutOfStock)
+                articleOutOfStock: dtoProductToTicket(productsOutOfStock)
             }
         } catch (error) {
             throw error

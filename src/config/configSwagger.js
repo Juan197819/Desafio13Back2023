@@ -11,6 +11,6 @@ const swaggerOptions = {
         },
         servers: [{url: 'http://localhost:8080'}]
     },
-    apis: [`${__dirname}/src/docs/**/*.yaml`]
+    apis: [`${__dirname}/src/docs/*.yml`]
 }
 export const specs = swaggerJSDoc(swaggerOptions)

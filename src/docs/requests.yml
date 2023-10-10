@@ -1,0 +1,32 @@
+components:
+  parameters:
+    schemas:
+      bodyNewProducts:
+        type: object
+        required:
+          - title
+          - description
+          - stock
+          - category
+          - code
+          - price
+        properties:
+          title: 
+            type: string
+          description: 
+            type: string
+          stock: 
+            type: number
+          category: 
+            type: string
+          code: 
+            type: string
+          price: 
+            type: number
+        example: 
+          title: Globo Terraqueo
+          description: Globo Terraqueo 30cm Ø Con Base Plastico
+          stock: 15
+          category: libreria
+          code: GLB040
+          price: 3550

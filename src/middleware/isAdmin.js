@@ -7,7 +7,7 @@ export function isAdmin(req, res, next) {
         if (req.user.rol == 'Administrador') {
             next()
         } else {
-            throw new errorCustom('Unauthorized', 401, 'Access denied!! (Route only for administrators)')
+            throw new errorCustom('Forbidden', 403, 'Access denied!! (Route only for administrators)')
         }
     }
 }

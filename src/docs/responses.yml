@@ -1,0 +1,242 @@
+components:
+  schema:
+    products:
+      newProduct:
+        type: object
+        properties:
+          _id:
+            type: string
+            description: ID autogenerado de Mongo
+          title: 
+            type: string
+            description: Nombre del producto
+          description: 
+            type: string
+            description: Descripcion del producto
+          code: 
+            type: string
+            description: Codigo interno del producto
+          status: 
+            type: boolean
+            description: Estado del producto
+          price: 
+            type: number
+            description: Precio del producto
+          stock: 
+            type: number
+            description: Cantidad disponible del producto
+          category: 
+            type: string
+            description: Categoria del producto
+          thumbnail: 
+            type: array
+            description: Array de URL de imagenes del producto  
+        example:
+          _id: 64945f5d07398c853cdd66de
+          title: Globo Terraqueo
+          status: false
+          description: Globo Terraqueo 30cm Ø Con Base Plastico
+          stock: 15
+          category: libreria
+          code: GLB040
+          price: 3550
+          thumbnail:
+            - https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png
+      getAllProducts:
+        type: array
+        items: 
+          properties:
+            id:
+              type: string
+            title: 
+              type: string
+            description: 
+              type: string
+            price: 
+              type: number
+            stock: 
+              type: number
+            category: 
+              type: string
+            thumbnail: 
+              type: array
+        example:
+          id: 64945f5d07398c853cdd66de
+          title: Globo Terraqueo
+          description: Globo Terraqueo 30cm Ø Con Base Plastico
+          stock: 15
+          category: libreria
+          price: 3550
+          thumbnail:
+            - https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png
+      getProductById:
+        type: object
+        properties:
+          _id:
+            type: string
+            description: ID autogenerado de Mongo     
+          title: 
+            type: string
+            description: Nombre del producto
+          description: 
+            type: string
+            description: Descripcion del producti
+          code: 
+            type: string
+            description: Codigo interno del producto
+          status: 
+            type: boolean
+            description: Estado del producto
+          price: 
+            type: number
+            description: Precio del producto
+          stock: 
+            type: number
+            description: Cantidad disponible del producto
+          category: 
+            type: string
+            description: Categoria del producto
+          thumbnail: 
+            type: array
+            description: Array de URL de imagenes del producto  
+        example:
+          _id: 64945f5d07398c853cdd66de
+          title: Globo Terraqueo
+          status: false
+          description: Globo Terraqueo 30cm Ø Con Base Plastico
+          stock: 15
+          category: libreria
+          code: GLB040
+          price: 3550
+          thumbnail:
+            - https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png
+      errorServer:
+        type: object
+        properties:
+          error:
+            type: string
+            description: Nombre del error 
+          status: 
+            type: number
+            description: Codigo de estado del error 
+          message: 
+            type: string
+            description: Descripción del error
+          detailsError: 
+            type: string
+            description: Detalles especificos del tipo de error
+        example:
+          error: Internal Server Error,
+          status: 500,
+          message: connect ECONNREFUSED 127.0.0.1:27017,
+          detailsError: Type MongoServerSelectionError
+    carts:
+      newCart:
+        type: object
+        properties:
+          _id:
+            type: string
+            description: ID autogenerado de Mongo
+          title: 
+            type: string
+            description: Nombre del producto
+          description: 
+            type: string
+            description: Descripcion del producto
+          code: 
+            type: string
+            description: Codigo interno del producto
+          status: 
+            type: boolean
+            description: Estado del producto
+          price: 
+            type: number
+            description: Precio del producto
+          stock: 
+            type: number
+            description: Cantidad disponible del producto
+          category: 
+            type: string
+            description: Categoria del producto
+          thumbnail: 
+            type: array
+            description: Array de URL de imagenes del producto  
+        example:
+          _id: 64945f5d07398c853cdd66de
+          title: Globo Terraqueo
+          status: false
+          description: Globo Terraqueo 30cm Ø Con Base Plastico
+          stock: 15
+          category: libreria
+          code: GLB040
+          price: 3550
+          thumbnail:
+            - https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png
+      getAllProducts:
+        type: array
+        items: 
+          properties:
+            id:
+              type: string
+            title: 
+              type: string
+            description: 
+              type: string
+            price: 
+              type: number
+            stock: 
+              type: number
+            category: 
+              type: string
+            thumbnail: 
+              type: array
+        example:
+          id: 64945f5d07398c853cdd66de
+          title: Globo Terraqueo
+          description: Globo Terraqueo 30cm Ø Con Base Plastico
+          stock: 15
+          category: libreria
+          price: 3550
+          thumbnail:
+            - https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png
+      getProductById:
+        type: object
+        properties:
+          _id:
+            type: string
+            description: ID autogenerado de Mongo     
+          title: 
+            type: string
+            description: Nombre del producto
+          description: 
+            type: string
+            description: Descripcion del producti
+          code: 
+            type: string
+            description: Codigo interno del producto
+          status: 
+            type: boolean
+            description: Estado del producto
+          price: 
+            type: number
+            description: Precio del producto
+          stock: 
+            type: number
+            description: Cantidad disponible del producto
+          category: 
+            type: string
+            description: Categoria del producto
+          thumbnail: 
+            type: array
+            description: Array de URL de imagenes del producto  
+        example:
+          _id: 64945f5d07398c853cdd66de
+          title: Globo Terraqueo
+          status: false
+          description: Globo Terraqueo 30cm Ø Con Base Plastico
+          stock: 15
+          category: libreria
+          code: GLB040
+          price: 3550
+          thumbnail:
+            - https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png
