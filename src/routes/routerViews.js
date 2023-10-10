@@ -1,6 +1,6 @@
 import {Router} from 'express'
 import { controllerViews } from '../controllers/controllerViews.js'
-import { authPassport2, authPassport } from '../middleware/authPasport.js'
+import { authFalse, authTrue } from '../middleware/authPasportViews.js'
 import passport from 'passport'
 
 export const routerViews = Router()
@@ -8,14 +8,14 @@ export const routerViews = Router()
 routerViews.get('/', controllerViews.controllerIndex) 
 routerViews.get('/users/profile-github', passport.authenticate(`github`, { scope: ['user:email'], failureRedirect: '/errorLogin',successRedirect: '/home' }))
 
-routerViews.get('/home', authPassport, controllerViews.controllerHome) 
-routerViews.get('/current', authPassport, controllerViews.controllerProfile) 
-routerViews.get('/realtimeproducts', authPassport, controllerViews.controllerRealtimeproducts) 
-routerViews.get('/products',authPassport, controllerViews.controllerProductsInTarget) 
-routerViews.get('/carts/:cid', authPassport, controllerViews.controllerViewCart) 
+routerViews.get('/home', authTrue, controllerViews.controllerHome) 
+routerViews.get('/current', authTrue, controllerViews.controllerProfile) 
+routerViews.get('/realtimeproducts', authTrue, controllerViews.controllerRealtimeproducts) 
+routerViews.get('/products',authTrue, controllerViews.controllerProductsInTarget) 
+routerViews.get('/carts/:cid', authTrue, controllerViews.controllerViewCart) 
 
-routerViews.get('/errorRegister', authPassport2, controllerViews.controllerViewsErrorRegister) 
-routerViews.get('/errorLogin', authPassport2, controllerViews.controllerViewsErrorLogin) 
+routerViews.get('/errorRegister', authFalse, controllerViews.controllerViewsErrorRegister) 
+routerViews.get('/errorLogin', authFalse, controllerViews.controllerViewsErrorLogin) 
 routerViews.get('/logout', controllerViews.controllerLogout) 
-routerViews.get('/register', authPassport2, controllerViews.controllerViewsRegister)
-routerViews.get('/login', authPassport2, controllerViews.controllerViewsLogin) 
+routerViews.get('/register', authFalse, controllerViews.controllerViewsRegister)
+routerViews.get('/login', authFalse, controllerViews.controllerViewsLogin) 
