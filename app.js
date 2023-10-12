@@ -13,6 +13,7 @@ import './src/passport/passportLocal.js'
 import router from './src/routes/index.js'
 import cors from 'cors'
 import config from './src/config/configEnv.js';
+import morgan from 'morgan';
 
 const app = express()
 app.use("/docs", serve, setup(specs))

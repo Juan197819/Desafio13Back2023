@@ -57,7 +57,6 @@ class DaoProducts {
             if (!product) throw new errorCustom('Not Found', 404, `Product ID ${id} not found, failed product search`)
             return product
         } catch (error) {
-            // if (error.name == 'CastError') throw new errorCustom('Bad Request', 400, 'Error in product search: incorrect id format', error) 
             throw (error)   
         }
     }
@@ -67,7 +66,6 @@ class DaoProducts {
             if (!product) throw new errorCustom('Not Found', 404, `Product ID ${id} not found, product update failed`)
             return (`Product id ${id} modified successfully`);
         } catch (error) {
-            if (error.name == 'CastError') throw new errorCustom('Bad Request', 400, 'Error in product search: incorrect id format', error) 
             throw (error)   
         }
     }
@@ -77,7 +75,6 @@ class DaoProducts {
             if (!product) throw new errorCustom('Not Found', 404, `Product ID ${id} not found, failed product removal`)
             return (`Product id ${id} successfully deleted`);
         } catch (error) {
-            if (error.name == 'CastError') throw new errorCustom('Bad Request', 400, 'Error in product search: incorrect id format', error) 
             throw (error)   
         }
     }

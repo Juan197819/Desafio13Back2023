@@ -9,7 +9,6 @@ class DaoCarts {
             if (!cart) throw new errorCustom('Not Found', 404, `Cart ID ${id} not found, try again!!`)
             return cart
         } catch (error) {
-            if (error.name == 'CastError') throw new errorCustom('Bad Request', 400, 'Error in cart search: incorrect id format', error)
             throw error   
         }
     }

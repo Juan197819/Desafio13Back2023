@@ -32,7 +32,7 @@ class ServiceProducts {
 
     async serviceGetProductById (id){
         try {
-            const product = await daoProducts.getProductById(id)
+            const product = await repository.repositoryGetProductById(id)
             return product
         } catch (error) {
             throw error

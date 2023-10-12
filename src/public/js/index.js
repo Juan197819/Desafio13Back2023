@@ -46,7 +46,6 @@ let nav
         if (email == 'adminCoder@coder.com') {
             const botonAgregarProducto = document.querySelector('.botonAgregarProductos');
             botonAgregarProducto.style.display = 'none'
-            console.log('email', email)
         } else {
             const botonCrearProductos = document.querySelector('.crearProductos');
             botonCrearProductos.style.display

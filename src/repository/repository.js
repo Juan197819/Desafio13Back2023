@@ -1,7 +1,7 @@
 import config from '../config/configEnv.js';
 import { dtoProfile } from '../dtos/dtoProfile.js';
 const { default: daoProducts } = await import(`../daos/${config.PERSISTENCE}/daoProducts.js`)
-import { dtoProductToViews } from "../dtos/dtoProductToViews.js"
+import { dtoProduct, dtoArrayProducts } from "../dtos/dtoGetProducts.js"
 import { serviceUsers } from '../services/serviceUsers.js';
 
 class Repository {
@@ -9,7 +9,7 @@ class Repository {
         try {
             let { limit, page, sort, ...query } = reqQuery
             const response = await daoProducts.getProducts(limit, page, sort, query)
-            const products = dtoProductToViews(response)
+            const products = dtoArrayProducts(response)
             return products 
         } catch (error) {
             throw error
@@ -19,8 +19,16 @@ class Repository {
         try {
             let { limit, page, sort, ...query } = reqQuery
             const response = await daoProducts.getProducts(limit, page, sort, query)
-            const products = dtoProductToViews(response)
+            const products = dtoArrayProducts(response)
             return {products,...response} 
+        } catch (error) {
+            throw error
+        }
+    }
+    async repositoryGetProductById(id) {
+        try {
+            const product = await daoProducts.getProductById(id)
+            return dtoProduct(product)
         } catch (error) {
             throw error
         }
